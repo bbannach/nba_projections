@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from st_aggrid import AgGrid, GridOptionsBuilder, DataReturnMode
 
 
-player_ratings = pd.read_csv('C:/Programming/Projects/nbaproject/player_ratings.csv')
-minutes_projections = pd.read_csv('C:/Programming/Projects/nbaproject/DARKO_daily_projections_2022-08-28.csv')
+player_ratings = pd.read_csv('player_ratings.csv')
+minutes_projections = pd.read_csv('DARKO_daily_projections_2022-08-28.csv')
 player_ratings = player_ratings.merge(minutes_projections[['Player','Minutes']],how="left",on="Player")
 
 
