@@ -40,7 +40,7 @@ team_ratings = player_ratings.groupby('Team')[['value','Minutes']].sum()
 team_ratings['net_rating'] = team_ratings['value']/team_ratings['Minutes']*5
 
 
-schedule = pd.read_csv('C:/Programming/Projects/nbaproject/schedule.csv')
+schedule = pd.read_csv('schedule.csv')
 schedule = schedule.merge(team_ratings['net_rating'],how='left',left_on='Away',right_index=True)
 schedule = schedule.merge(team_ratings['net_rating'],how='left',left_on='Home',right_index=True)
 
