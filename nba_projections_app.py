@@ -187,7 +187,7 @@ summary = summary.merge(all_playoff_results_df_count,how='left',left_index=True,
 summary.index.name = 'Team'
 summary = summary[['mean','min','max','1stRound','2ndRound','ConferenceFinals','Finals','Champion']]
 
-st.dataframe(summary.sort_values('Champion'),ascending=False,height=750)
+st.dataframe(summary.sort_values('Champion',ascending=False),height=750)
 
 #st.write(plt.boxplot(simulations))
 
