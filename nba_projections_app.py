@@ -15,7 +15,9 @@ player_ratings = player_ratings.merge(minutes_projections[['Player','Minutes']],
 #player_ratings['d_value'] = player_ratings['D-DPM']*player_ratings['Minutes']
 player_ratings_original = player_ratings
 
+st.title("NBA Projections App")
 
+st.caption("Player Ratings: Choose either 'Original', which is an average of 538 and DARKO projections for the 2023 season, or choose 'Custom' and the values you enter will be used to simulate the results.")
 
 ratings_button = st.radio('Player Ratings',('Original','Custom'))
 
@@ -48,6 +50,9 @@ schedule.columns = ['Away','Home','away_rating','home_rating']
 #adding 2.7 for home court advantage from anpatton's project
 schedule['home_rating'] = schedule['home_rating'] + 2.7
 
+
+
+st.caption('Adjust the slider for the desired number of simulations to be run.  The table displays the average, minimum, and maximum win totals across the simulations, as well as the percentage of simulations that ended with the team reaching various stages in the postseason.')
 
 slider = st.slider('Simulations',0,100,5)
 
@@ -187,7 +192,7 @@ summary = summary.merge(all_playoff_results_df_count,how='left',left_index=True,
 summary.index.name = 'Team'
 summary = summary[['mean','min','max','1stRound','2ndRound','ConferenceFinals','Finals','Champion']]
 
-st.dataframe(summary.sort_values('Champion',ascending=False),height=750)
+st.dataframe(summary.sort_values(['Champion','mean'],ascending = [False,False]),height=750)
 
 #st.write(plt.boxplot(simulations))
 
